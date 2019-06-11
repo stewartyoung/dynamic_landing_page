@@ -18,10 +18,39 @@ function showTime() {
   hour = hour % 12 || 12;
 
   // output time
-  time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
+    sec
+  )}`;
 
   setTimeout(showTime, 1000);
 }
 
-// Run
+// Add zeros to single digit elements of time
+function addZero(n) {
+  return (parseInt(n, 10) < 10 ? "0" : "") + n;
+}
+
+// Set background and greeting depending on time
+function setBgGreet() {
+  let today = new Date(),
+    hour = today.getHours();
+
+  if (hour < 12) {
+    // Morning
+    document.body.style.backgroundImage = "url('../img/morning.jpg')";
+    greeting.textContent = "Good Morning";
+  } else if (hour < 18) {
+    // Afternnon
+    document.body.style.backgroundImage = "url('../img/afternoon.png')";
+    greeting.textContent = "Good Afternoon";
+  } else {
+    // Evening
+    document.body.style.backgroundImage = "url('../img/evening.jpg')";
+    greeting.textContent = "Good Evening";
+    document.body.style.color = "white";
+  }
+}
+
+// Run (they're asynchronous)
 showTime();
+setBgGreet();
