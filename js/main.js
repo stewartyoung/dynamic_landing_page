@@ -49,6 +49,12 @@ function setBgGreet() {
     greeting.textContent = "Good Evening";
     document.body.style.color = "white";
   }
+
+  // Make sure background image fills the viewport
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPositionX = "center";
+  document.body.style.backgroundPositionY = "center";
+  document.body.style.backgroundSize = "cover";
 }
 
 // Run (they're asynchronous)
